@@ -1,0 +1,19 @@
+// Icon resource
+ID_ICON           ICON    "storyjumper.ico"
+
+// Manifest (Windows 10/11 styled)
+1                 RT_MANIFEST "app.manifest"
+
+// Simple dialog resource (resource ID 101)
+101 DIALOGEX 6, 18, 237, 75
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About StoryJumper Extractor"
+FONT 9, "Segoe UI"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,170,55,54,15
+    LTEXT           "StoryJumper Extractor Tool", -1, 10, 10, 210, 12
+    LTEXT           "https://www.storyjumper.com/", -1, 10, 28, 210, 10
+END
+
+// WAV sound example
+ID_SOUND1         WAVE    "sound1.wav"
