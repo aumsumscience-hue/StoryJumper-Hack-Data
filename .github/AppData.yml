@@ -1,0 +1,27 @@
+from ExtractEngine.extractor import ExtractEngine
+import yaml
+import json
+import os
+
+def main():
+    default_url = "https://www.storyjumper.com/book/read/189207341/NICOLA-L-ASTRONAUTA-2"
+    print("StoryJumper Book Extractor (ExtractEngine)")
+    url = input(f"Enter the StoryJumper book URL [default: {default_url}]: ").strip()
+    if not url:
+        url = default_url
+
+    engine = ExtractEngine(output_dir="storyjumper_output")
+    try:
+        meta = engine.extract_book(url, return_metadata=True)  # Update ExtractEngine to support return_metadata
+        # Save as YAML
+        yml_path = os.path.join(engine.output_dir, "metadata.yml")
+        with open(yml_path, "w", encoding="utf-8") as f:
+            yaml.dump(meta, f, allow_unicode=True, sort_keys=False)
+        print("\nExtraction complete! See 'metadata.json' and 'metadata.yml' in the storyjumper_output directory.")
+    except Exception as e:
+        print(f"Extraction failed: {e}")
+
+    input("\nPress Enter to exit.")
+
+if __name__ == "__main__":
+    main()
